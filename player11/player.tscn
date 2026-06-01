@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bbyjvxs640cbj" path="res://tool/ueisukun_sprite.png" id="1_h4kpy"]
 [ext_resource type="Script" uid="uid://dqxcj0ql4gj8m" path="res://player11/player.gd" id="1_i0att"]
+[ext_resource type="Script" uid="uid://bpq58l0k0q5we" path="res://player11/states/state_machine.gd" id="3_2620i"]
+[ext_resource type="Script" uid="uid://dv37ekk8ob84y" path="res://player11/states/idle_state.gd" id="4_j7cpg"]
+[ext_resource type="Script" uid="uid://rit8b6b4x0g5" path="res://player11/states/walk_state.gd" id="5_17jii"]
+[ext_resource type="Script" uid="uid://ip1cmxemg1p2" path="res://player11/states/attack_state.gd" id="6_d313m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i0att"]
 radius = 32.0
@@ -100,3 +104,15 @@ shape = SubResource("CircleShape2D_i0att")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=244445053]
 libraries/ = SubResource("AnimationLibrary_p4tae")
+
+[node name="StateMachine" type="Node" parent="." unique_id=81911676]
+script = ExtResource("3_2620i")
+
+[node name="StateIdle" type="Node" parent="StateMachine" unique_id=2025541393]
+script = ExtResource("4_j7cpg")
+
+[node name="StateWalk" type="Node" parent="StateMachine" unique_id=1930846906]
+script = ExtResource("5_17jii")
+
+[node name="StateAttack" type="Node" parent="StateMachine" unique_id=1062747874]
+script = ExtResource("6_d313m")
