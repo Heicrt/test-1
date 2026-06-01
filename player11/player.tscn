@@ -6,6 +6,80 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_i0att"]
 radius = 32.0
 
+[sub_resource type="Animation" id="Animation_p4tae"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="Animation" id="Animation_i0att"]
+resource_name = "attak"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29, 30]
+}
+
+[sub_resource type="Animation" id="Animation_gk5w1"]
+resource_name = "attakleft"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_0765f"]
+resource_name = "attakup"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44, 45]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p4tae"]
+_data = {
+&"RESET": SubResource("Animation_p4tae"),
+&"attakdown": SubResource("Animation_i0att"),
+&"attakleft": SubResource("Animation_gk5w1"),
+&"attakup": SubResource("Animation_0765f")
+}
+
 [node name="player" type="CharacterBody2D" unique_id=384254417]
 script = ExtResource("1_i0att")
 move_speed = 400.0
@@ -19,6 +93,10 @@ position = Vector2(3, -111)
 texture = ExtResource("1_h4kpy")
 hframes = 8
 vframes = 8
+frame = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=77408437]
 shape = SubResource("CircleShape2D_i0att")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=244445053]
+libraries/ = SubResource("AnimationLibrary_p4tae")
